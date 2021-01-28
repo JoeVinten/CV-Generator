@@ -1,0 +1,30 @@
+.sidebar {
+  height: 100vh;
+  background-color: #292f36;
+  width: 20%;
+  min-width: 300px;
+  margin: 0;
+  color: #fff;
+}
+
+.sidebar h1 {
+  margin: 0;
+  padding: 1em 0;
+  font-size: 2em;
+}
+
+.sidebar__content {
+  padding: 2em;
+}
+
+.sidebar__nav {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  font-size: 1.5em;
+}
+
+.sidebar__nav li {
+  margin: 2em 0;
+  cursor: pointer;
+}

@@ -1,0 +1,47 @@
+.App {
+  display: flex;
+}
+
+.form-section {
+  padding: 3em;
+}
+
+.form-section {
+  margin: 1em;
+}
+
+.form__container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin: 1em 0;
+}
+
+.form-group__label {
+  display: block;
+  font-weight: 600;
+  margin: 0 0 1em;
+}
+
+.form-group__input {
+  display: block;
+  padding: 1em 1.5em;
+  font-size: 1.2rem;
+  border-radius: 0.5em;
+  border: 3px solid #dedede;
+}
+
+.btn {
+  padding: 0.5em 3em;
+  border-radius: 0.5em;
+  background-color: #4ecdc4;
+  font-size: 1.1em;
+  font-weight: 600;
+  cursor: pointer;
+  border: 0;
+}
