@@ -1,23 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 
-export default function PersonalInfo() {
-  const [personalDetails, setPersonalDetails] = useState({});
-  // const [errors, setErrors] = useState(null);
-  // const [touched, setTouched] = useState({});
-
-  const handleSubmit = event => {
-    event.preventDefault();
-    console.log(personalDetails);
-  };
-
+export default function PersonalInfo(props) {
+  const personalDetails = props.value;
   const handleChange = event => {
-    event.persist();
-    setPersonalDetails(curDetails => {
-      return {
-        ...curDetails,
-        [event.target.name]: [event.target.value]
-      };
-    });
+    props.onChange(event);
+  };
+  const handleSubmit = event => {
+    props.onSubmit(event);
   };
   return (
     <section className="form-section personal-info">
@@ -32,7 +21,7 @@ export default function PersonalInfo() {
               name="name"
               className="form-group__input"
               type="text"
-              value={personalDetails.name}
+              value={personalDetails.name || ""}
               onChange={handleChange}
             ></input>
           </div>
@@ -44,7 +33,7 @@ export default function PersonalInfo() {
               name="email"
               className="form-group__input"
               type="email"
-              value={personalDetails.email}
+              value={personalDetails.email || ""}
               onChange={handleChange}
             ></input>
           </div>
@@ -56,7 +45,7 @@ export default function PersonalInfo() {
               name="phone"
               className="form-group__input"
               type="tel"
-              value={personalDetails.phone}
+              value={personalDetails.phone || ""}
               onChange={handleChange}
             ></input>
           </div>
@@ -68,11 +57,12 @@ export default function PersonalInfo() {
               name="linkedin"
               className="form-group__input"
               type="url"
-              value={personalDetails.linkedin}
+              value={personalDetails.linkedin || ""}
               onChange={handleChange}
             ></input>
           </div>
         </div>
+
         <button className="btn btn--submit">Next</button>
       </form>
     </section>
