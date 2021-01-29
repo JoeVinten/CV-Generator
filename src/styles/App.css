@@ -1,5 +1,6 @@
 .App {
-  display: flex;
+  display: grid;
+  grid-template-columns: 3fr 12fr;
 }
 
 .form-section {
@@ -44,4 +45,18 @@
   font-weight: 600;
   cursor: pointer;
   border: 0;
+}
+
+.textarea-container {
+  display: flex;
+  margin: 1em 0;
+}
+textarea {
+  resize: none;
+  width: 100%;
+  height: 200px;
+  padding: 1em 1.5em;
+  font-size: 1.2rem;
+  border-radius: 0.5em;
+  border: 3px solid #dedede;
 }

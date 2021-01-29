@@ -1,14 +1,15 @@
 import React, { useState } from "react";
-import "./App.css";
 import SideBar from "./components/SideBar/SideBar";
 import PersonalInfo from "./components/PersonalInfo/PersonalInfo";
-import useInput from "./services/useInput";
+import PersonalSummary from "./components/PersonalSummary/PersonalSummary";
+import "./styles/SideBar.css";
+import "./styles/App.css";
 
 function App() {
   const [personalDetails, setPersonalDetails] = useState({});
+  const [personalSummary, setPersonalSummary] = useState("");
   const handleSubmit = event => {
     event.preventDefault();
-    console.log(personalDetails);
   };
 
   const handleChange = event => {
@@ -20,14 +21,25 @@ function App() {
       };
     });
   };
+
+  const handlePersonalSummaryChange = event => {
+    setPersonalSummary(event.target.value);
+  };
   return (
     <div className="App">
       <SideBar />
-      <PersonalInfo
-        value={personalDetails}
-        onSubmit={handleSubmit}
-        onChange={handleChange}
-      />
+      <main>
+        <PersonalInfo
+          value={personalDetails}
+          onSubmit={handleSubmit}
+          onChange={handleChange}
+        />
+        <PersonalSummary
+          value={personalSummary}
+          onSubmit={handleSubmit}
+          onChange={handlePersonalSummaryChange}
+        />
+      </main>
     </div>
   );
 }
