@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import SideBar from "./components/SideBar/SideBar";
-import PersonalInfo from "./components/PersonalInfo/PersonalInfo";
-import PersonalSummary from "./components/PersonalSummary/PersonalSummary";
+import SideBar from "./components/SideBar";
+import PersonalInfo from "./components/PersonalInfo";
+import PersonalSummary from "./components/PersonalSummary";
 import "./styles/SideBar.css";
 import "./styles/App.css";
+import Education from "./components/Education";
 
 function App() {
   const [personalDetails, setPersonalDetails] = useState({});
   const [personalSummary, setPersonalSummary] = useState("");
+  const [education, setEducation] = useState({});
   const handleSubmit = event => {
     event.preventDefault();
   };
@@ -23,7 +25,21 @@ function App() {
   };
 
   const handlePersonalSummaryChange = event => {
-    setPersonalSummary(event.target.value);
+    setPersonalSummary(curDetails => {
+      return {
+        ...curDetails,
+        [event.target.name]: [event.target.value]
+      };
+    });
+  };
+
+  const handleEducationChange = event => {
+    setEducation(curDetails => {
+      return {
+        ...curDetails,
+        [event.target.name]: [event.target.value]
+      };
+    });
   };
   return (
     <div className="App">
@@ -38,6 +54,11 @@ function App() {
           value={personalSummary}
           onSubmit={handleSubmit}
           onChange={handlePersonalSummaryChange}
+        />
+        <Education
+          value={education}
+          onSubmit={handleSubmit}
+          onChange={handleEducationChange}
         />
       </main>
     </div>

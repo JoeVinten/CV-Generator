@@ -1,7 +1,8 @@
 import React from "react";
+import Textarea from "./Textarea";
 
-export default function PersonalSummary(props) {
-  const personalSummary = props.value;
+export default function Education(props) {
+  const education = props.value;
   const handleChange = event => {
     props.onChange(event);
   };
@@ -11,11 +12,13 @@ export default function PersonalSummary(props) {
 
   return (
     <section className="form-section">
-      <h2>Personal summary</h2>
+      <h2>Education</h2>
       <form onSubmit={handleSubmit}>
-        <div className="textarea-container">
-          <textarea value={personalSummary || ""} onChange={handleChange} />
-        </div>
+        <Textarea
+          name="education1"
+          value={education.education1}
+          onChange={handleChange}
+        />
 
         <button className="btn btn--submit">Next</button>
       </form>
