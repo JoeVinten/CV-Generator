@@ -60,3 +60,17 @@ textarea {
   border-radius: 0.5em;
   border: 3px solid #dedede;
 }
+
+.dates {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.dateFrom__container {
+  margin-right: 2em;
+}
+
+.dates__input {
+  font-size: 1em;
+}

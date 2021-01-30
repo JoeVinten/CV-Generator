@@ -1,5 +1,6 @@
 import React from "react";
 import Textarea from "./Textarea";
+import DateFromTo from "./DateFromTo";
 
 export default function Education(props) {
   const education = props.value;
@@ -14,6 +15,11 @@ export default function Education(props) {
     <section className="form-section">
       <h2>Education</h2>
       <form onSubmit={handleSubmit}>
+        <DateFromTo
+          name="education1"
+          value={education.education1}
+          onChange={handleChange}
+        />
         <Textarea
           name="education1"
           value={education.education1}
