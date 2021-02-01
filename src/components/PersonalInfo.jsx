@@ -1,5 +1,5 @@
 import React from "react";
-import TextInput from "./TextInput";
+import Input from "./Input";
 
 export default function PersonalInfo(props) {
   const personalDetails = props.value;
@@ -14,59 +14,34 @@ export default function PersonalInfo(props) {
       <h2>Personal information</h2>
       <form onSubmit={handleSubmit}>
         <div className="form__container">
-          <TextInput
+          <Input
+            type="text"
             name="name"
+            label="Name"
             value={personalDetails.name}
             onChange={handleChange}
           />
-          <div className="form-group">
-            <label htmlFor="name" className="form-group__label">
-              Name
-            </label>
-            <input
-              name="name"
-              className="form-group__input"
-              type="text"
-              value={personalDetails.name || ""}
-              onChange={handleChange}
-            ></input>
-          </div>
-          <div className="form-group">
-            <label htmlFor="email" className="form-group__label">
-              Email
-            </label>
-            <input
-              name="email"
-              className="form-group__input"
-              type="email"
-              value={personalDetails.email || ""}
-              onChange={handleChange}
-            ></input>
-          </div>
-          <div className="form-group">
-            <label htmlFor="phone" className="form-group__label">
-              Phone number
-            </label>
-            <input
-              name="phone"
-              className="form-group__input"
-              type="tel"
-              value={personalDetails.phone || ""}
-              onChange={handleChange}
-            ></input>
-          </div>
-          <div className="form-group">
-            <label htmlFor="linkedin" className="form-group__label">
-              LinkedIn
-            </label>
-            <input
-              name="linkedin"
-              className="form-group__input"
-              type="url"
-              value={personalDetails.linkedin || ""}
-              onChange={handleChange}
-            ></input>
-          </div>
+          <Input
+            type="email"
+            name="email"
+            label="Email"
+            value={personalDetails.email}
+            onChange={handleChange}
+          />
+          <Input
+            type="tel"
+            name="phoneNumber"
+            label="Phone number"
+            value={personalDetails.phoneNumber}
+            onChange={handleChange}
+          />
+          <Input
+            type="url"
+            name="linkedin"
+            label="LinkedIn"
+            value={personalDetails.linkedin}
+            onChange={handleChange}
+          />
         </div>
 
         <button className="btn btn--submit">Next</button>

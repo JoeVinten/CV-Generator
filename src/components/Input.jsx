@@ -7,13 +7,14 @@ export default function TextInput(props) {
   return (
     <div className="form-group">
       <label htmlFor="name" className="form-group__label">
-        Name
+        {props.label}
       </label>
       <input
+        type={props.type}
         name={props.name}
         className="form-group__input"
         type="text"
-        value={props.item || ""}
+        value={props.value || ""}
         onChange={handleChange}
       ></input>
     </div>

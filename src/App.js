@@ -5,8 +5,6 @@ import PersonalSummary from "./components/PersonalSummary";
 import "./styles/SideBar.css";
 import "./styles/App.css";
 import Education from "./components/Education";
-import DateFromTo from "./components/DateFromTo";
-import Textarea from "./components/Textarea";
 
 function App() {
   const [personalDetails, setPersonalDetails] = useState({});
@@ -58,6 +56,7 @@ function App() {
           onSubmit={handleSubmit}
           onChange={handlePersonalSummaryChange}
         />
+
         <Education
           value={education}
           onSubmit={handleSubmit}
