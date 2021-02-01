@@ -5,6 +5,7 @@ import PersonalSummary from "./components/PersonalSummary";
 import "./styles/SideBar.css";
 import "./styles/App.css";
 import Education from "./components/Education";
+import Employment from "./components/Employment";
 
 function App() {
   const [personalDetails, setPersonalDetails] = useState({});
@@ -16,6 +17,14 @@ function App() {
     education3: {},
     education4: {},
     education5: {}
+  });
+  const [employment, setEmployment] = useState({
+    employment0: {},
+    employment1: {},
+    employment2: {},
+    employment3: {},
+    employment4: {},
+    employment5: {}
   });
 
   const handleSubmit = event => {
@@ -52,6 +61,18 @@ function App() {
       };
     });
   };
+  const handleEmploymentChange = event => {
+    const curItem = [event.target.getAttribute("data-group")];
+    setEmployment(curDetails => {
+      return {
+        ...curDetails,
+        [curItem]: {
+          ...curDetails[curItem],
+          [event.target.name]: [event.target.value]
+        }
+      };
+    });
+  };
 
   return (
     <section className="App">
@@ -72,6 +93,11 @@ function App() {
           value={education}
           onSubmit={handleSubmit}
           onChange={handleEducationChange}
+        />
+        <Employment
+          value={employment}
+          onSubmit={handleSubmit}
+          onChange={handleEmploymentChange}
         />
       </main>
     </section>

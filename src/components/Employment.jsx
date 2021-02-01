@@ -2,18 +2,18 @@ import React, { useState } from "react";
 import Textarea from "./Textarea";
 import Input from "./Input";
 
-export default function Education(props) {
-  const [educationNumber, setEducationNumber] = useState(1);
+export default function Employment(props) {
+  const [employmentNumber, setEmploymentNumber] = useState(1);
 
-  const addEducation = () => {
-    if (educationNumber < 6) {
-      setEducationNumber(educationNumber + 1);
+  const addEmployment = () => {
+    if (employmentNumber < 6) {
+      setEmploymentNumber(employmentNumber + 1);
     } else {
-      console.error("Too much education for a CV!");
+      console.error("Too much employment for a CV!");
     }
   };
 
-  const education = props.value;
+  const employment = props.value;
   const handleChange = event => {
     props.onChange(event);
   };
@@ -23,60 +23,60 @@ export default function Education(props) {
 
   return (
     <section className="form-section">
-      <h2>Education</h2>
+      <h2>Employment history</h2>
 
       <form onSubmit={handleSubmit}>
-        {[...Array(educationNumber)].map((item, index) => {
+        {[...Array(employmentNumber)].map((item, index) => {
           return (
             <section key={index.toString()}>
               <div className="form__container">
                 <Input
-                  group={"education" + index}
+                  group={"employment" + index}
                   type="text"
-                  name="school"
-                  label="School / University"
-                  value={education["education" + index].school || ""}
+                  name="company"
+                  label="Company"
+                  value={employment["employment" + index].company || ""}
                   onChange={handleChange}
                 />
                 <Input
-                  group={"education" + index}
+                  group={"employment" + index}
                   type="text"
-                  name="course"
-                  label="Course"
-                  value={education["education" + index].course}
+                  name="role"
+                  label="Role"
+                  value={employment["employment" + index].role}
                   onChange={handleChange}
                 />
                 <Input
-                  group={"education" + index}
+                  group={"employment" + index}
                   type="date"
                   name="dateFrom"
                   label="Date from"
-                  value={education["education" + index].dateFrom}
+                  value={employment["employment" + index].dateFrom}
                   onChange={handleChange}
                 />
                 <Input
-                  group={"education" + index}
+                  group={"employment" + index}
                   type="date"
                   name="dateTo"
                   label="Date to"
-                  value={education["education" + index].dateTo}
+                  value={employment["employment" + index].dateTo}
                   onChange={handleChange}
                 />
               </div>
               <Textarea
-                group={"education" + index}
+                group={"employment" + index}
                 name="summary"
                 onChange={handleChange}
-                value={education["education" + index].summary}
+                value={employment["employment" + index].summary}
               />
             </section>
           );
         })}
 
         <div className="btn-container">
-          {educationNumber < 6 ? (
-            <button className="btn btn--add" onClick={addEducation}>
-              Add education
+          {employmentNumber < 6 ? (
+            <button className="btn btn--add" onClick={addEmployment}>
+              Add employment
             </button>
           ) : null}
 
