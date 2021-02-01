@@ -1,4 +1,5 @@
 import React from "react";
+import TextInput from "./TextInput";
 
 export default function PersonalInfo(props) {
   const personalDetails = props.value;
@@ -13,6 +14,11 @@ export default function PersonalInfo(props) {
       <h2>Personal information</h2>
       <form onSubmit={handleSubmit}>
         <div className="form__container">
+          <TextInput
+            name="name"
+            value={personalDetails.name}
+            onChange={handleChange}
+          />
           <div className="form-group">
             <label htmlFor="name" className="form-group__label">
               Name

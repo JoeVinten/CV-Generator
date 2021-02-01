@@ -14,7 +14,7 @@ export default function DateFromTo(props) {
           className="form-group__input dates__input"
           type="date"
           name="dateFrom"
-          value={props.value}
+          value={props.value.dateFrom || ""}
           onChange={handleChange}
         />
       </div>
@@ -26,7 +26,7 @@ export default function DateFromTo(props) {
           className="form-group__input dates__input"
           type="date"
           name="dateTo"
-          value={props.value}
+          value={props.value.dateTo || ""}
           onChange={handleChange}
         />
       </div>

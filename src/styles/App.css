@@ -74,3 +74,11 @@ textarea {
 .dates__input {
   font-size: 1em;
 }
+
+.btn-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  height: 100px;
+}

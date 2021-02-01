@@ -5,17 +5,19 @@ import PersonalSummary from "./components/PersonalSummary";
 import "./styles/SideBar.css";
 import "./styles/App.css";
 import Education from "./components/Education";
+import DateFromTo from "./components/DateFromTo";
+import Textarea from "./components/Textarea";
 
 function App() {
   const [personalDetails, setPersonalDetails] = useState({});
   const [personalSummary, setPersonalSummary] = useState("");
   const [education, setEducation] = useState({});
+
   const handleSubmit = event => {
     event.preventDefault();
   };
 
   const handleChange = event => {
-    event.persist();
     setPersonalDetails(curDetails => {
       return {
         ...curDetails,
@@ -41,8 +43,9 @@ function App() {
       };
     });
   };
+
   return (
-    <div className="App">
+    <section className="App">
       <SideBar />
       <main>
         <PersonalInfo
@@ -61,7 +64,7 @@ function App() {
           onChange={handleEducationChange}
         />
       </main>
-    </div>
+    </section>
   );
 }
 

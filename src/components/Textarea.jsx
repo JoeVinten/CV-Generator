@@ -5,12 +5,15 @@ export default function Textarea(props) {
     props.onChange(event);
   };
   return (
-    <div className="textarea-container">
-      <textarea
-        name={props.name}
-        value={props.value || ""}
-        onChange={handleChange}
-      />
+    <div>
+      <div className="textarea-container">
+        <textarea
+          name={props.name}
+          section={props.section}
+          value={props.value || ""}
+          onChange={handleChange}
+        />
+      </div>
     </div>
   );
 }
