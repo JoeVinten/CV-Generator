@@ -9,7 +9,14 @@ import Education from "./components/Education";
 function App() {
   const [personalDetails, setPersonalDetails] = useState({});
   const [personalSummary, setPersonalSummary] = useState("");
-  const [education, setEducation] = useState({});
+  const [education, setEducation] = useState({
+    education0: {},
+    education1: {},
+    education2: {},
+    education3: {},
+    education4: {},
+    education5: {}
+  });
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -34,10 +41,14 @@ function App() {
   };
 
   const handleEducationChange = event => {
+    const curItem = [event.target.getAttribute("data-group")];
     setEducation(curDetails => {
       return {
         ...curDetails,
-        [event.target.name]: [event.target.value]
+        [curItem]: {
+          ...curDetails[curItem],
+          [event.target.name]: [event.target.value]
+        }
       };
     });
   };

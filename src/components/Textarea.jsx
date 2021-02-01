@@ -8,6 +8,7 @@ export default function Textarea(props) {
     <div>
       <div className="textarea-container">
         <textarea
+          data-group={props.group}
           name={props.name}
           section={props.section}
           value={props.value || ""}

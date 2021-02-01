@@ -13,10 +13,11 @@ export default function TextInput(props) {
         type={props.type}
         name={props.name}
         className="form-group__input"
+        data-group={props.group}
         type="text"
         value={props.value || ""}
         onChange={handleChange}
-      ></input>
+      />
     </div>
   );
 }
