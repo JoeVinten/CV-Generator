@@ -7,6 +7,7 @@ import "./styles/App.css";
 import Education from "./components/Education";
 import Employment from "./components/Employment";
 import Skills from "./components/Skills";
+import Hobbies from "./components/Hobbies";
 
 function App() {
   const [personalInfo, setPersonalInfo] = useState({});
@@ -97,6 +98,11 @@ function App() {
           value={skills}
           onSubmit={handleSubmit}
           onChange={e => handleInputs(e, setSkills)}
+        />
+        <Hobbies
+          value={hobbies}
+          onSubmit={handleSubmit}
+          onChange={e => handleInputs(e, setHobbies)}
         />
       </main>
     </section>
