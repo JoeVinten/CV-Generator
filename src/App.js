@@ -44,21 +44,9 @@ function App() {
     });
   };
 
-  const handleEducationChange = event => {
+  const handleNestedChange = (event, callback) => {
     const curItem = [event.target.getAttribute("data-group")];
-    setEducation(curDetails => {
-      return {
-        ...curDetails,
-        [curItem]: {
-          ...curDetails[curItem],
-          [event.target.name]: [event.target.value]
-        }
-      };
-    });
-  };
-  const handleEmploymentChange = event => {
-    const curItem = [event.target.getAttribute("data-group")];
-    setEmployment(curDetails => {
+    callback(curDetails => {
       return {
         ...curDetails,
         [curItem]: {
@@ -87,12 +75,12 @@ function App() {
         <Education
           value={education}
           onSubmit={handleSubmit}
-          onChange={handleEducationChange}
+          onChange={e => handleNestedChange(e, setEducation)}
         />
         <Employment
           value={employment}
           onSubmit={handleSubmit}
-          onChange={handleEmploymentChange}
+          onChange={e => handleNestedChange(e, setEmployment)}
         />
         <Skills
           value={skills}
