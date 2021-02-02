@@ -34,7 +34,7 @@ function App() {
 
   const handleSubmit = event => {
     event.preventDefault();
-    setStatus(status + 1);
+    if (status < 7) setStatus(status + 1);
   };
 
   const handleInputs = (event, callback) => {
@@ -59,9 +59,15 @@ function App() {
     });
   };
 
+  const handleNavClick = e => {
+    const navItem = parseInt(e.target.getAttribute("data-number"));
+    console.log(navItem);
+    setStatus(navItem);
+  };
+
   return (
     <section className="App">
-      <SideBar status={status} />
+      <SideBar status={status} handleClick={handleNavClick} />
       <main>
         {status === 1 && (
           <PersonalInfo

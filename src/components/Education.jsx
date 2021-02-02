@@ -5,7 +5,8 @@ import Input from "./Input";
 export default function Education(props) {
   const [educationNumber, setEducationNumber] = useState(1);
 
-  const addEducation = () => {
+  const addEducation = e => {
+    e.preventDefault();
     if (educationNumber < 6) {
       setEducationNumber(educationNumber + 1);
     } else {

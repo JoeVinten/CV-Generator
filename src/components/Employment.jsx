@@ -5,7 +5,8 @@ import Input from "./Input";
 export default function Employment(props) {
   const [employmentNumber, setEmploymentNumber] = useState(1);
 
-  const addEmployment = () => {
+  const addEmployment = e => {
+    e.preventDefault();
     if (employmentNumber < 6) {
       setEmploymentNumber(employmentNumber + 1);
     } else {

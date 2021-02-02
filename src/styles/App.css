@@ -82,3 +82,7 @@ textarea {
   align-items: flex-start;
   height: 100px;
 }
+
+.selected {
+  color: #4ecdc4;
+}
