@@ -27,7 +27,7 @@ function App() {
     employment4: {},
     employment5: {}
   });
-  const [skills, setSkills] = useState("");
+  const [skills, setSkills] = useState([]);
   const [hobbies, setHobbies] = useState("");
 
   const handleSubmit = event => {
@@ -92,6 +92,11 @@ function App() {
           value={employment}
           onSubmit={handleSubmit}
           onChange={handleEmploymentChange}
+        />
+        <Skills
+          value={skills}
+          onSubmit={handleSubmit}
+          onChange={e => handleInputs(e, setSkills)}
         />
       </main>
     </section>
