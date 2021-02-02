@@ -6,9 +6,10 @@ import "./styles/SideBar.css";
 import "./styles/App.css";
 import Education from "./components/Education";
 import Employment from "./components/Employment";
+import Skills from "./components/Skills";
 
 function App() {
-  const [personalDetails, setPersonalDetails] = useState({});
+  const [personalInfo, setPersonalInfo] = useState({});
   const [personalSummary, setPersonalSummary] = useState("");
   const [education, setEducation] = useState({
     education0: {},
@@ -26,25 +27,18 @@ function App() {
     employment4: {},
     employment5: {}
   });
+  const [skills, setSkills] = useState("");
+  const [hobbies, setHobbies] = useState("");
 
   const handleSubmit = event => {
     event.preventDefault();
   };
 
-  const handleChange = event => {
-    setPersonalDetails(curDetails => {
+  const handleInputs = (event, callback) => {
+    callback(curDetails => {
       return {
         ...curDetails,
-        [event.target.name]: [event.target.value]
-      };
-    });
-  };
-
-  const handlePersonalSummaryChange = event => {
-    setPersonalSummary(curDetails => {
-      return {
-        ...curDetails,
-        [event.target.name]: [event.target.value]
+        [event.target.name]: event.target.value
       };
     });
   };
@@ -79,14 +73,14 @@ function App() {
       <SideBar />
       <main>
         <PersonalInfo
-          value={personalDetails}
+          value={personalInfo}
           onSubmit={handleSubmit}
-          onChange={handleChange}
+          onChange={e => handleInputs(e, setPersonalInfo)}
         />
         <PersonalSummary
           value={personalSummary}
           onSubmit={handleSubmit}
-          onChange={handlePersonalSummaryChange}
+          onChange={e => handleInputs(e, setPersonalSummary)}
         />
 
         <Education
