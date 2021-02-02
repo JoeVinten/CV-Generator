@@ -10,6 +10,7 @@ import Skills from "./components/Skills";
 import Hobbies from "./components/Hobbies";
 
 function App() {
+  const [status, setStatus] = useState(1);
   const [personalInfo, setPersonalInfo] = useState({});
   const [personalSummary, setPersonalSummary] = useState("");
   const [education, setEducation] = useState({
@@ -33,6 +34,7 @@ function App() {
 
   const handleSubmit = event => {
     event.preventDefault();
+    setStatus(status + 1);
   };
 
   const handleInputs = (event, callback) => {
@@ -59,39 +61,50 @@ function App() {
 
   return (
     <section className="App">
-      <SideBar />
+      <SideBar status={status} />
       <main>
-        <PersonalInfo
-          value={personalInfo}
-          onSubmit={handleSubmit}
-          onChange={e => handleInputs(e, setPersonalInfo)}
-        />
-        <PersonalSummary
-          value={personalSummary}
-          onSubmit={handleSubmit}
-          onChange={e => handleInputs(e, setPersonalSummary)}
-        />
-
-        <Education
-          value={education}
-          onSubmit={handleSubmit}
-          onChange={e => handleNestedChange(e, setEducation)}
-        />
-        <Employment
-          value={employment}
-          onSubmit={handleSubmit}
-          onChange={e => handleNestedChange(e, setEmployment)}
-        />
-        <Skills
-          value={skills}
-          onSubmit={handleSubmit}
-          onChange={e => handleInputs(e, setSkills)}
-        />
-        <Hobbies
-          value={hobbies}
-          onSubmit={handleSubmit}
-          onChange={e => handleInputs(e, setHobbies)}
-        />
+        {status === 1 && (
+          <PersonalInfo
+            value={personalInfo}
+            onSubmit={handleSubmit}
+            onChange={e => handleInputs(e, setPersonalInfo)}
+          />
+        )}
+        {status === 2 && (
+          <PersonalSummary
+            value={personalSummary}
+            onSubmit={handleSubmit}
+            onChange={e => handleInputs(e, setPersonalSummary)}
+          />
+        )}
+        {status === 3 && (
+          <Education
+            value={education}
+            onSubmit={handleSubmit}
+            onChange={e => handleNestedChange(e, setEducation)}
+          />
+        )}
+        {status === 4 && (
+          <Employment
+            value={employment}
+            onSubmit={handleSubmit}
+            onChange={e => handleNestedChange(e, setEmployment)}
+          />
+        )}
+        {status === 5 && (
+          <Skills
+            value={skills}
+            onSubmit={handleSubmit}
+            onChange={e => handleInputs(e, setSkills)}
+          />
+        )}
+        {status === 6 && (
+          <Hobbies
+            value={hobbies}
+            onSubmit={handleSubmit}
+            onChange={e => handleInputs(e, setHobbies)}
+          />
+        )}
       </main>
     </section>
   );

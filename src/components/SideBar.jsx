@@ -1,6 +1,8 @@
 import React from "react";
 
-export default function SideBar() {
+export default function SideBar(props) {
+  const status = props.status;
+
   return (
     <section className="sidebar">
       <div className="sidebar__content">
