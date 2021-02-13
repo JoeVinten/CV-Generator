@@ -14,7 +14,7 @@ export default function TextInput(props) {
         name={props.name}
         className="form-group__input"
         data-group={props.group}
-        type="text"
+        type={props.type}
         value={props.value || ""}
         onChange={handleChange}
       />

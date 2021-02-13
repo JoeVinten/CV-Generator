@@ -8,33 +8,21 @@ import Education from "./components/Education";
 import Employment from "./components/Employment";
 import Skills from "./components/Skills";
 import Hobbies from "./components/Hobbies";
+import { Output } from "./components/Output";
 
 function App() {
   const [status, setStatus] = useState(1);
   const [personalInfo, setPersonalInfo] = useState({});
   const [personalSummary, setPersonalSummary] = useState("");
-  const [education, setEducation] = useState({
-    education0: {},
-    education1: {},
-    education2: {},
-    education3: {},
-    education4: {},
-    education5: {}
-  });
-  const [employment, setEmployment] = useState({
-    employment0: {},
-    employment1: {},
-    employment2: {},
-    employment3: {},
-    employment4: {},
-    employment5: {}
-  });
+  // need to review how I set state as a nested object
+  const [education, setEducation] = useState({});
+  const [employment, setEmployment] = useState({});
   const [skills, setSkills] = useState([]);
   const [hobbies, setHobbies] = useState("");
 
   const handleSubmit = event => {
     event.preventDefault();
-    if (status < 7) setStatus(status + 1);
+    if (status < 8) setStatus(status + 1);
   };
 
   const handleInputs = (event, callback) => {
@@ -46,22 +34,8 @@ function App() {
     });
   };
 
-  const handleNestedChange = (event, callback) => {
-    const curItem = [event.target.getAttribute("data-group")];
-    callback(curDetails => {
-      return {
-        ...curDetails,
-        [curItem]: {
-          ...curDetails[curItem],
-          [event.target.name]: [event.target.value]
-        }
-      };
-    });
-  };
-
   const handleNavClick = e => {
     const navItem = parseInt(e.target.getAttribute("data-number"));
-    console.log(navItem);
     setStatus(navItem);
   };
 
@@ -87,14 +61,14 @@ function App() {
           <Education
             value={education}
             onSubmit={handleSubmit}
-            onChange={e => handleNestedChange(e, setEducation)}
+            onChange={e => handleInputs(e, setEducation)}
           />
         )}
         {status === 4 && (
           <Employment
             value={employment}
             onSubmit={handleSubmit}
-            onChange={e => handleNestedChange(e, setEmployment)}
+            onChange={e => handleInputs(e, setEmployment)}
           />
         )}
         {status === 5 && (
@@ -109,6 +83,16 @@ function App() {
             value={hobbies}
             onSubmit={handleSubmit}
             onChange={e => handleInputs(e, setHobbies)}
+          />
+        )}
+        {status === 7 && (
+          <Output
+            personalInfo={personalInfo}
+            personalSummary={personalSummary}
+            education={education}
+            employment={employment}
+            skills={skills}
+            hobbies={hobbies}
           />
         )}
       </main>

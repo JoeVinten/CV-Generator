@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Textarea from "./Textarea";
 import Input from "./Input";
 
+// OK.... we need to push the state into here, instead of just adding a number each time you hit add new education, it needs to also add a new item on the state otherwise it's effectively uncontrolled
+
 export default function Education(props) {
   const [educationNumber, setEducationNumber] = useState(1);
 
@@ -15,6 +17,7 @@ export default function Education(props) {
   };
 
   const education = props.value;
+
   const handleChange = event => {
     props.onChange(event);
   };
@@ -34,41 +37,41 @@ export default function Education(props) {
                 <Input
                   group={"education" + index}
                   type="text"
-                  name="school"
-                  label="School / University"
-                  value={education["education" + index].school || ""}
+                  name={"school" + index}
+                  label="School"
+                  value={education["school" + index] || ""}
                   onChange={handleChange}
                 />
                 <Input
                   group={"education" + index}
                   type="text"
-                  name="course"
+                  name={"course" + index}
                   label="Course"
-                  value={education["education" + index].course}
+                  value={education["course" + index] || ""}
                   onChange={handleChange}
                 />
                 <Input
                   group={"education" + index}
                   type="date"
-                  name="dateFrom"
+                  name={"dateFrom" + index}
                   label="Date from"
-                  value={education["education" + index].dateFrom}
+                  value={education["dateFrom" + index] || ""}
                   onChange={handleChange}
                 />
                 <Input
                   group={"education" + index}
                   type="date"
-                  name="dateTo"
+                  name={"dateTo" + index}
                   label="Date to"
-                  value={education["education" + index].dateTo}
+                  value={education["dateTo" + index] || ""}
                   onChange={handleChange}
                 />
               </div>
               <Textarea
                 group={"education" + index}
-                name="summary"
+                name={"summary" + index}
                 onChange={handleChange}
-                value={education["education" + index].summary}
+                value={education["summary" + index] || ""}
               />
             </section>
           );

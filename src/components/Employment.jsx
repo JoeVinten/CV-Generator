@@ -34,41 +34,41 @@ export default function Employment(props) {
                 <Input
                   group={"employment" + index}
                   type="text"
-                  name="company"
+                  name={"company" + index}
                   label="Company"
-                  value={employment["employment" + index].company || ""}
+                  value={employment["company" + index] || ""}
                   onChange={handleChange}
                 />
                 <Input
                   group={"employment" + index}
                   type="text"
-                  name="role"
+                  name={"role" + index}
                   label="Role"
-                  value={employment["employment" + index].role}
+                  value={employment["role" + index] || ""}
                   onChange={handleChange}
                 />
                 <Input
                   group={"employment" + index}
                   type="date"
-                  name="dateFrom"
+                  name={"dateFrom" + index}
                   label="Date from"
-                  value={employment["employment" + index].dateFrom}
+                  value={employment["dateFrom" + index] || ""}
                   onChange={handleChange}
                 />
                 <Input
                   group={"employment" + index}
                   type="date"
-                  name="dateTo"
+                  name={"dateTo" + index}
                   label="Date to"
-                  value={employment["employment" + index].dateTo}
+                  value={employment["dateTo" + index] || ""}
                   onChange={handleChange}
                 />
               </div>
               <Textarea
                 group={"employment" + index}
-                name="summary"
+                name={"summary" + index}
                 onChange={handleChange}
-                value={employment["employment" + index].summary}
+                value={employment["summary" + index] || ""}
               />
             </section>
           );
