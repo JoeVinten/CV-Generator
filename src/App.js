@@ -14,8 +14,7 @@ function App() {
   const [status, setStatus] = useState(1);
   const [personalInfo, setPersonalInfo] = useState({});
   const [personalSummary, setPersonalSummary] = useState("");
-  // need to review how I set state as a nested object
-  const [education, setEducation] = useState({});
+  const [education, setEducation] = useState([]);
   const [employment, setEmployment] = useState({});
   const [skills, setSkills] = useState([]);
   const [hobbies, setHobbies] = useState("");
@@ -37,6 +36,21 @@ function App() {
   const handleNavClick = e => {
     const navItem = parseInt(e.target.getAttribute("data-number"));
     setStatus(navItem);
+  };
+
+  const deleteItem = (e, index) => {
+    const filteredEducation = Object.assign(education);
+    for (const key in filteredEducation) {
+      if (filteredEducation.hasOwnProperty(key)) {
+        console.log(filteredEducation[key]);
+
+        if (filteredEducation[key].includes(index)) {
+          delete filteredEducation[key];
+          console.log(key);
+        }
+      }
+    }
+    setEducation(filteredEducation);
   };
 
   return (
@@ -62,6 +76,7 @@ function App() {
             value={education}
             onSubmit={handleSubmit}
             onChange={e => handleInputs(e, setEducation)}
+            onDelete={deleteItem}
           />
         )}
         {status === 4 && (

@@ -10,6 +10,14 @@ export function Output(props) {
     hobbies
   } = props;
 
+  const filteredSchools = Object.keys(education).filter(inputs =>
+    inputs.includes("school")
+  );
+
+  const filteredEmployment = Object.keys(employment).filter(inputs =>
+    inputs.includes("company")
+  );
+
   return (
     <section className="output">
       <div className="title">
@@ -28,19 +36,38 @@ export function Output(props) {
       </div>
       <div className="cv__section">
         <h2>Education</h2>
-        <div className="education__container">
-          <div className="education__title">
-            <h3>{education.school0}</h3>
-            <p>{education.course0}</p>
-            <p>
-              {education.dateFrom0} - {education.dateTo0}
-            </p>
+        {filteredSchools.map((school, index) => (
+          <div key={index} className="education__container">
+            <div className="education__title">
+              <h3>{education[school]}</h3>
+              <p>{education[`course${index}`]}</p>
+              <p>
+                {education[`dateFrom${index}`]} - {education[`dateTo${index}`]}
+              </p>
+            </div>
+            <div className="education__summary">
+              {education[`summary${index}`]}
+            </div>
           </div>
-          <div className="education__summary">{education.summary0}</div>
-        </div>
+        ))}
       </div>
       <div className="cv__section">
         <h2>Employment history</h2>
+        {filteredEmployment.map((company, index) => (
+          <div key={index} className="education__container">
+            <div className="education__title">
+              <h3>{employment[company]}</h3>
+              <p>{employment[`role${index}`]}</p>
+              <p>
+                {employment[`dateFrom${index}`]} -{" "}
+                {employment[`dateTo${index}`]}
+              </p>
+            </div>
+            <div className="education__summary">
+              {employment[`summary${index}`]}
+            </div>
+          </div>
+        ))}
       </div>
       <div className="cv__section">
         <h2>Skills</h2>

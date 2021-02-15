@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import Textarea from "./Textarea";
 import Input from "./Input";
 
-// OK.... we need to push the state into here, instead of just adding a number each time you hit add new education, it needs to also add a new item on the state otherwise it's effectively uncontrolled
-
 export default function Education(props) {
   const [educationNumber, setEducationNumber] = useState(1);
 
@@ -14,6 +12,12 @@ export default function Education(props) {
     } else {
       console.error("Too much education for a CV!");
     }
+  };
+
+  const deleteEducation = (e, index) => {
+    e.preventDefault();
+    props.onDelete(e, index);
+    if (educationNumber > 1) setEducationNumber(educationNumber - 1);
   };
 
   const education = props.value;
@@ -73,6 +77,14 @@ export default function Education(props) {
                 onChange={handleChange}
                 value={education["summary" + index] || ""}
               />
+              {educationNumber > 1 ? (
+                <button
+                  className="btn btn--delete"
+                  onClick={e => deleteEducation(e, index)}
+                >
+                  Delete
+                </button>
+              ) : null}
             </section>
           );
         })}
