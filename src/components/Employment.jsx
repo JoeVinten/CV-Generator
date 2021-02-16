@@ -14,6 +14,12 @@ export default function Employment(props) {
     }
   };
 
+  const deleteEmployment = (e, index) => {
+    e.preventDefault();
+    props.onDelete(index);
+    if (employmentNumber > 1) setEmploymentNumber(employmentNumber - 1);
+  };
+
   const employment = props.value;
   const handleChange = event => {
     props.onChange(event);
@@ -70,6 +76,14 @@ export default function Employment(props) {
                 onChange={handleChange}
                 value={employment["summary" + index] || ""}
               />
+              {employmentNumber > 1 ? (
+                <button
+                  className="btn btn--delete"
+                  onClick={e => deleteEmployment(e, index)}
+                >
+                  Delete
+                </button>
+              ) : null}
             </section>
           );
         })}

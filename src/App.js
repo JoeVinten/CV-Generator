@@ -14,7 +14,7 @@ function App() {
   const [status, setStatus] = useState(1);
   const [personalInfo, setPersonalInfo] = useState({});
   const [personalSummary, setPersonalSummary] = useState("");
-  const [education, setEducation] = useState([]);
+  const [education, setEducation] = useState({});
   const [employment, setEmployment] = useState({});
   const [skills, setSkills] = useState([]);
   const [hobbies, setHobbies] = useState("");
@@ -38,19 +38,24 @@ function App() {
     setStatus(navItem);
   };
 
-  const deleteItem = (e, index) => {
-    const filteredEducation = Object.assign(education);
-    for (const key in filteredEducation) {
-      if (filteredEducation.hasOwnProperty(key)) {
-        console.log(filteredEducation[key]);
-
-        if (filteredEducation[key].includes(index)) {
-          delete filteredEducation[key];
-          console.log(key);
-        }
+  const deleteEducation = index => {
+    let filteredObj = {};
+    for (const [key, value] of Object.entries(education)) {
+      if (!key.includes(index)) {
+        filteredObj[key] = value;
       }
     }
-    setEducation(filteredEducation);
+    setEducation(filteredObj);
+  };
+
+  const deleteEmployment = index => {
+    let filteredObj = {};
+    for (const [key, value] of Object.entries(employment)) {
+      if (!key.includes(index)) {
+        filteredObj[key] = value;
+      }
+    }
+    setEmployment(filteredObj);
   };
 
   return (
@@ -76,7 +81,7 @@ function App() {
             value={education}
             onSubmit={handleSubmit}
             onChange={e => handleInputs(e, setEducation)}
-            onDelete={deleteItem}
+            onDelete={deleteEducation}
           />
         )}
         {status === 4 && (
@@ -84,6 +89,7 @@ function App() {
             value={employment}
             onSubmit={handleSubmit}
             onChange={e => handleInputs(e, setEmployment)}
+            onDelete={deleteEmployment}
           />
         )}
         {status === 5 && (

@@ -16,7 +16,7 @@ export default function Education(props) {
 
   const deleteEducation = (e, index) => {
     e.preventDefault();
-    props.onDelete(e, index);
+    props.onDelete(index);
     if (educationNumber > 1) setEducationNumber(educationNumber - 1);
   };
 
