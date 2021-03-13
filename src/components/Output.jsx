@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/Output.css";
 
 export function Output(props) {
   const {
@@ -24,11 +25,9 @@ export function Output(props) {
         <h1>{personalInfo.name}</h1>
       </div>
       <div className="subtitle">
-        <ul>
-          <li>{personalInfo.email}</li>
-          <li>{personalInfo.phoneNumber}</li>
-          <li>{personalInfo.linkedin}</li>
-        </ul>
+        <div>{personalInfo.email}</div>
+        <div>{personalInfo.phoneNumber}</div>
+        <div>{personalInfo.linkedin}</div>
       </div>
       <div className="cv__section">
         <h2>Personal summary</h2>
